@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=siluremonami';
 $user = 'root';
-$pwd = 'X*qv#!2fmw';
+$pwd = 'monmotdepasse';
 
 try{
   $pdo = new PDO($dsn, $user, $pwd, [
