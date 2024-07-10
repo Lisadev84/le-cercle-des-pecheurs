@@ -3,7 +3,7 @@
     <head>
         <?php require_once 'includes/head.php' ?>
         <link rel="stylesheet" href="/public/css/index.css">
-        <title>Accueil</title>
+        <title>error-page</title>
     </head>
 
     <body>
