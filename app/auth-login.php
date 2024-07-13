@@ -1,6 +1,6 @@
 <?php
-require_once './database/database.php';
- $authDB = require_once './database/security.php';
+require_once __DIR__ . '/database/database.php';
+$authDB = require_once __DIR__ . '/database/security.php';
 $errors = [
   'firstname' => '',
   'lastname' => '',

@@ -10,7 +10,7 @@
         <div class="container">
             <?php require_once 'includes/header.php' ?>
             <div class="content">
-                <h1 style="font-size:7rem;text-align:center;">Oops ! une erreur est survenue</h1>
+                <h1 style="font-size:6rem;text-align:center;">Oops ! une erreur est survenue</h1>
             </div>
             <?php require_once 'includes/footer.php' ?>
         </div>
