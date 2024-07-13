@@ -19,7 +19,7 @@ composer.phar
 *.sqlite3
 *.db-shm
 *.db-wal
-database.php
+config.local.php
 
 ### PHP-CS-Fixer ###
 # Covers PHP CS Fixer
