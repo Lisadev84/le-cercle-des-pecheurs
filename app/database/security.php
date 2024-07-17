@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__ . '/config.local.php';
+$configFile = __DIR__ . '/config.local.php';
+if (!file_exists($configFile)) {
+    $configFile = __DIR__ . '/config.prod.php';
+}
+
 class AuthDB
 {
   private PDOStatement $statementRegister;
