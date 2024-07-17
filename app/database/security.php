@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/config.local.php';
 class AuthDB
 {
   private PDOStatement $statementRegister;
@@ -41,7 +41,7 @@ class AuthDB
     $this->statementCreateSession->bindValue(':userid', $userId);
     $this->statementCreateSession->bindValue(':idsession', $sessionId);
     $this->statementCreateSession->execute();
-    $signature = hash_hmac('sha256', $sessionId, 'cinq petits chats');
+    $signature = hash_hmac('sha256', $sessionId, 'SECRETSESSION');
     setcookie('session', $sessionId, time() + 60 * 60 * 24 * 14, '', '', false, true);
     setcookie('signature', $signature, time() + 60 * 60 * 24 * 14, '', '', false, true);
     return;
@@ -72,7 +72,7 @@ class AuthDB
     $sessionId = $_COOKIE['session'] ?? '';
     $signature = $_COOKIE['signature'] ?? '';
     if ($sessionId && $signature) {
-      $hash = hash_hmac('sha256', $sessionId, 'cinq petits chats');
+      $hash = hash_hmac('sha256', $sessionId, 'SECRETSESSION');
       if (hash_equals($hash, $signature)) {
         $this->statementReadSession->bindValue(':idsession', $sessionId);
         $this->statementReadSession->execute();
