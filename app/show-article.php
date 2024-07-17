@@ -35,7 +35,7 @@ if (!$id) {
                 <div class="separator"></div>
                 <p class="article-content"><?= $article['content'] ?></p>
                 <p class="article-author"><?= $article['pseudo'] ?></p>
-                <?php if($currentUser && $currentUser['id'] === $article['author']) : ?>
+                <?php if ($article['author'] === $currentUser['id'] || $currentUser['role'] === 'admin'): ?>
                     <div class="action">
                         <a class="btn btn-secondary" href="/app/delete-article.php?id=<?= $article['id'] ?>">Supprimer l'article</a>
                         <a class="btn btn-primary" href="/app/form-article.php?id=<?= $article['id'] ?>">Editer l'article</a>

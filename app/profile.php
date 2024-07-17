@@ -56,6 +56,10 @@ $articles = $articleDB->fetchUserArticle($currentUser['id']);
             <strong>Email :</strong>
             <p><?= $currentUser['email'] ?></p>
           </li>
+          <li>
+            <strong>Rôle :</strong>
+            <p><?= $currentUser['role'] ?></p>
+        </li>
         </ul>
       </div>
       <h2>Mes articles</h2>
@@ -65,9 +69,9 @@ $articles = $articleDB->fetchUserArticle($currentUser['id']);
             <li>
               <span><?= $article['title'] ?></span>
               <div class="article-action">
-                <a href="/app/form-article.php?id=<?= $article['id'] ?>" class="btn btn-primary btn-small">Modifier</a>
-                <a href="#" onclick="confirmDeletion(event, <?= $article['id'] ?>)" class="btn btn-secondary btn-small">Supprimer</a>
-              </div>
+                  <a href="/app/form-article.php?id=<?= $article['id'] ?>" class="btn btn-primary btn-small">Modifier</a>
+                  <a href="#" onclick="confirmDeletion(event, <?= $article['id'] ?>)" class="btn btn-secondary btn-small">Supprimer</a>
+                </div>
             </li>
           <?php endforeach; ?>
         </ul>

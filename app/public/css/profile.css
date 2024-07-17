@@ -1,5 +1,5 @@
 .content {
-  align-items: flex-start ;
+  align-items:center ;
   justify-content: flex-start;
 }
 
@@ -32,8 +32,12 @@ width: 100%;
 
   .article-action {
     margin-top: 1rem;
-
+    padding-top : 10px;
+    display: flex;
+    justify-content: center;
   }
+
+  
 
  
   

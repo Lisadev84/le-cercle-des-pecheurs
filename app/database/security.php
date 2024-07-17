@@ -19,7 +19,8 @@ class AuthDB
       :lastname, 
       :pseudo,
       :email,
-      :password
+      :password,
+      :role
       )');
 
     $this->statementReadSession =  $pdo->prepare('SELECT * FROM `session` WHERE idsession=:idsession');
@@ -54,6 +55,7 @@ class AuthDB
     $this->statementRegister->bindValue(':pseudo', $user['pseudo']);
     $this->statementRegister->bindValue(':email', $user['email']);
     $this->statementRegister->bindValue(':password', $hashedPassword);
+    $this->statementRegister->bindValue(':role', $user['role']);
     $this->statementRegister->execute();
     return;
   }

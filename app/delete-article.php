@@ -9,7 +9,7 @@ if ($currentUser && $_SERVER['REQUEST_METHOD'] === 'GET' ) {
     $id = $_GET['id'] ?? '';
     if ($id) {
         $article = $articleDB->fetchOne($id);
-        if ($article && $article['author'] === $currentUser['id']) {
+        if ($article['author'] === $currentUser['id'] || $currentUser['role'] === 'admin') {
             $articleDB->deleteOne($id);
         }
     }

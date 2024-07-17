@@ -16,6 +16,7 @@ $errors = [
   'lastname' => FILTER_SANITIZE_SPECIAL_CHARS,
   'pseudo' => FILTER_SANITIZE_SPECIAL_CHARS,
   'email'=> FILTER_SANITIZE_EMAIL,
+  'role' => FILTER_SANITIZE_SPECIAL_CHARS
  ]);
  $firstname = $input['firstname'] ?? '';
  $lastname = $input['lastname'] ?? '';
@@ -23,6 +24,7 @@ $errors = [
  $email = $input['email'] ?? '';
  $password = $_POST['password'] ?? '';
  $confirmpassword = $_POST['confirmpassword'] ?? '';
+ $role = $input['role'] ?? 'user';
 
  if(!$firstname) {
     $errors['firstname'] = ERROR_REQUIRED; 

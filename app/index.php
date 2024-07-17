@@ -46,6 +46,12 @@ if (count($articles)) {
         <div class="container">
             <?php require_once 'includes/header.php' ?>
             <div class="content">
+                <div class="presentation">
+                    <h2>Amis pêcheurs, bienvenue !</h2>
+                    <p>Bienvenue sur mon site dédié à la passion de la pêche ! Ici, nous partageons nos trucs et astuces, explorons diverses techniques de pêche, et racontons l'histoire fascinante de cette pratique ancestrale.</p>
+                    <p>Que vous soyez débutant ou expert, nous avons du contenu pour tous les niveaux, avec un fort respect pour une pêche éthique et responsable. Découvrez nos articles sur le matériel indispensable, nos anecdotes captivantes et profitez de la possibilité d'ajouter vos propres articles et photos. Rejoignez notre communauté de passionnés et partagez votre amour pour la pêche !</p>
+
+                </div>
                 <div class="newsfeed-container">
                     <div class="category-container">
                         <ul class="category-container">

@@ -149,7 +149,6 @@ header {
     width: 100%;
     color: var(--text-color);
     background:var(--background-light) ;
-
 }
 
 .show {
@@ -163,6 +162,9 @@ header {
 .header-mobile-list li.active {
     color: #fff;
     font-weight: 700;
+}
+.header-mobile-list li:hover {
+    background-color: var(--primary-dark);
 }
 
 .header-menu li:hover,
