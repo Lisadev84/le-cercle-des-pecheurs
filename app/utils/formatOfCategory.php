@@ -1,5 +1,5 @@
 <?php
-$availableCategories = require 'availableCategories.php';
+$availableCategories = require __DIR__ . '/availableCategories.php';
 
 foreach ($availableCategories as $cat) {
     echo '<option ' 

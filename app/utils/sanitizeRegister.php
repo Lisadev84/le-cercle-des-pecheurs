@@ -5,6 +5,7 @@ require_once 'errors.php';
 $errors = [
   'firstname' => '',
   'lastname' => '',
+  'pseudo' => '',
   'email' => '',
   'password' => '',
   'confirmpassword' => ''
@@ -13,11 +14,13 @@ $errors = [
  $input = filter_input_array(INPUT_POST, [
   'firstname' => FILTER_SANITIZE_SPECIAL_CHARS,
   'lastname' => FILTER_SANITIZE_SPECIAL_CHARS,
+  'pseudo' => FILTER_SANITIZE_SPECIAL_CHARS,
   'email'=> FILTER_SANITIZE_EMAIL,
  ]);
  $firstname = $input['firstname'] ?? '';
  $lastname = $input['lastname'] ?? '';
- $email= $input['email'] ?? '';
+ $pseudo = $input['pseudo'] ?? '';
+ $email = $input['email'] ?? '';
  $password = $_POST['password'] ?? '';
  $confirmpassword = $_POST['confirmpassword'] ?? '';
 
@@ -31,6 +34,14 @@ $errors = [
   $errors['lastname'] = ERROR_REQUIRED; 
 } elseif (mb_strlen($lastname) < 2 ) {
   $errors['lastname'] = ERROR_LASTNAME_TOO_SHORT;
+}
+
+if(!$pseudo) {
+  $errors['pseudo'] = ERROR_REQUIRED; 
+} elseif (mb_strlen($pseudo) < 2 ) {
+  $errors['pseudo'] = ERROR_PSEUDO_TOO_SHORT;
+}  elseif (!$authDB->isPseudoUnique($pseudo)) {
+  $errors['pseudo'] = ERROR_PSEUDO_ALREADY_EXISTS;
 }
 
 if(!$email) {

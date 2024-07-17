@@ -5,6 +5,7 @@ class AuthDB
   private PDOStatement $statementRegister;
   private PDOStatement $statementReadSession;
   private PDOStatement $statementReadUser;
+  private PDOStatement $statementReadUserFromPseudo;
   private PDOStatement $statementReadUserFromEmail;
   private PDOStatement $statementCreateSession;
   private PDOStatement $statementDeleteSession;
@@ -16,6 +17,7 @@ class AuthDB
       DEFAULT,
       :firstname,
       :lastname, 
+      :pseudo,
       :email,
       :password
       )');
@@ -49,10 +51,18 @@ class AuthDB
     $hashedPassword = password_hash($user['password'], PASSWORD_ARGON2I);
     $this->statementRegister->bindValue(':firstname', $user['firstname']);
     $this->statementRegister->bindValue(':lastname', $user['lastname']);
+    $this->statementRegister->bindValue(':pseudo', $user['pseudo']);
     $this->statementRegister->bindValue(':email', $user['email']);
     $this->statementRegister->bindValue(':password', $hashedPassword);
     $this->statementRegister->execute();
     return;
+  }
+
+  function isPseudoUnique(string $pseudo): bool
+  {
+    $this->statementReadUserFromPseudo->bindValue(':pseudo', $pseudo);
+    $this->statementReadUserFromPseudo->execute();
+    return $this->statementReadUserFromPseudo->fetchColumn() === false;
   }
 
   function isLoggedin(): array | false

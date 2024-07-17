@@ -3,7 +3,6 @@ require_once 'errors.php';
 
 
 $errors = [
- 
   'email' => '',
   'password' => ''
  ];

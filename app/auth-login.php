@@ -10,7 +10,7 @@ $errors = [
  ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  require_once './utils/sanitizeLogin.php';
+  require_once __DIR__ . '/utils/sanitizeLogin.php';
     if (empty(array_filter($errors, fn ($e) => $e !== ''))) {
       
       $user = $authDB->getUserFromEmail($email);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $errors['password'] = ERROR_PASSWORD_MISMATCH;
         } else {
           $authDB->login($user['id']);
-          header('Location: /');
+          header('Location: /app/index.php');
         }
       }
     }
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
   <?php require_once 'includes/head.php' ?>
-  <link rel="stylesheet" href="/public/css/auth-login.css">
+  <link rel="stylesheet" href="/app/public/css/auth-login.css">
   <title>Connexion</title>
 </head>
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="content">
     <div class="block p-20 form-container">
         <h1>Connexion</h1>
-        <form action="/auth-login.php" method="POST">
+        <form action="/app/auth-login.php" method="POST">
           <div class="form-control">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="<?= $email ?? '' ?>">
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
           </div>
           <div class="action">
-            <a href="/" class="btn btn-secondary" type="button">Annuler</a>
+            <a href="/app/index.php" class="btn btn-secondary" type="button">Annuler</a>
             <button class="btn btn-primary" type="submit">Connexion</button>
           </div>
         </form>

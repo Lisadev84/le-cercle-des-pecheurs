@@ -14,4 +14,6 @@ const ERROR_EMAIL_INVALID = 'L\'email n\'est pas valide';
 const ERROR_PASSWORD_TOO_SHORT = 'Le mot de passe doit contenir au moins 6 caractères';
 const ERROR_PASSWORD_MISMATCH = 'Le mot de passe n\'est pas valide';
 const ERROR_EMAIL_UNKNOW = 'L\'email n\'est pas enregistré';
+const ERROR_PSEUDO_TOO_SHORT = 'Le pseudo est trop court';
+const ERROR_PSEUDO_ALREADY_EXISTS = 'Ce pseudo est déjà pris.';
 ?>

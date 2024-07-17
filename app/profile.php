@@ -6,7 +6,7 @@ $articleDB = require_once __DIR__ . '/database/models/ArticleDB.php';
 $articles = [];
 $currentUser = $authDB->isLoggedin();
 if (!$currentUser) {
-  header('Location: /');
+  header('Location: /app/index.php');
 }
 
 $articles = $articleDB->fetchUserArticle($currentUser['id']);
@@ -20,8 +20,16 @@ $articles = $articleDB->fetchUserArticle($currentUser['id']);
 
 <head>
   <?php require_once 'includes/head.php' ?>
-  <link rel="stylesheet" href="/public/css/profile.css">
+  <link rel="stylesheet" href="/app/public/css/profile.css">
   <title>Mon profil</title>
+  <script>
+    function confirmDeletion(event, articleId) {
+      event.preventDefault();
+      if (confirm("Voulez-vous vraiment supprimer cet article ?")) {
+        window.location.href = '/app/delete-article.php?id=' + articleId;
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -41,6 +49,10 @@ $articles = $articleDB->fetchUserArticle($currentUser['id']);
             <p><?= $currentUser['lastname'] ?></p>
           </li>
           <li>
+            <strong>Pseudo :</strong>
+            <p><?= $currentUser['pseudo'] ?></p>
+          </li>
+          <li>
             <strong>Email :</strong>
             <p><?= $currentUser['email'] ?></p>
           </li>
@@ -53,8 +65,8 @@ $articles = $articleDB->fetchUserArticle($currentUser['id']);
             <li>
               <span><?= $article['title'] ?></span>
               <div class="article-action">
-                <a href="/form-article.php?id=<?= $article['id'] ?>" class="btn btn-primary btn-small">Modifier</a>
-                <a href="/delete-article.php?id=<?= $article['id'] ?>"class="btn btn-secondary btn-small">Supprimer</a>
+                <a href="/app/form-article.php?id=<?= $article['id'] ?>" class="btn btn-primary btn-small">Modifier</a>
+                <a href="#" onclick="confirmDeletion(event, <?= $article['id'] ?>)" class="btn btn-secondary btn-small">Supprimer</a>
               </div>
             </li>
           <?php endforeach; ?>

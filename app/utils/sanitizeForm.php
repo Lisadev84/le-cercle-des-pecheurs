@@ -57,6 +57,6 @@ if (!$content) {
     $errors['content'] = ERROR_REQUIRED;
 } elseif (mb_strlen($content) < 50) {
     $errors['content'] = ERROR_CONTENT_TOO_SHORT;
-} elseif (mb_strlen($content) > 2500) {
+} elseif (mb_strlen($content) > 5000) {
     $errors['content'] = ERROR_CONTENT_TOO_LONG;
 }

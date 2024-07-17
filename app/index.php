@@ -3,7 +3,7 @@ require __DIR__ . '/database/database.php';
 $authDB = require __DIR__ . '/database/security.php';
 
 $currentUser = $authDB->isLoggedin();
-$articleDB = require_once __DIR__ . './database/models/ArticleDB.php';
+$articleDB = require_once __DIR__ . '/database/models/ArticleDB.php';
 
 $articles = $articleDB->fetchAll();
 $categories = [];
@@ -38,7 +38,7 @@ if (count($articles)) {
 <html lang="fr">
     <head>
         <?php require_once 'includes/head.php' ?>
-        <link rel="stylesheet" href="/public/css/index.css">
+        <link rel="stylesheet" href="/app/public/css/index.css">
         <title>Accueil</title>
     </head>
 
@@ -50,11 +50,11 @@ if (count($articles)) {
                     <div class="category-container">
                         <ul class="category-container">
                             <li class=<?= $selectedCat ? '' : 'cat-active' ?>>
-                                <a href="/">Tous les articles <span class="small">(<?= count($articles) ?>)</span></a>
+                                <a href="/app/index.php">Tous les articles <span class="small">(<?= count($articles) ?>)</span></a>
                             </li>
                             <?php foreach ($categories as $catName => $catNum) : ?>
                                 <li class=<?= $selectedCat === $catName ? 'cat-active' : '' ?>>
-                                    <a href="/?cat=<?= $catName ?>"><?= $catName ?><span class="small">(<?= $catNum ?>)</span></a>
+                                    <a href="/app/index.php?cat=<?= $catName ?>"><?= $catName ?><span class="small">(<?= $catNum ?>)</span></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -65,14 +65,14 @@ if (count($articles)) {
                                  <h2><?= mb_convert_case($cat, MB_CASE_TITLE) ?></h2>
                                 <div class="articles-container">
                                     <?php foreach ($articlePerCategory[$cat] as $article) : ?>
-                                        <a href="show-article.php?id=<?= $article['id'] ?>" class="article block">
+                                        <a href="/app/show-article.php?id=<?= $article['id'] ?>" class="article block">
                                             <div class="overflow">
                                                 <div class="img-container" style="background-image:url(<?= $article['image'] ?>)"></div>
                                             </div>
                                             <h3><?= $article['title'] ?></h3>
                                             <?php if ($article['author']): ?>
                                             <div class= "article-author">
-                                                <p><?= $article['firstname'] . ' '. $article['lastname'] ?></p></div>
+                                                <p><?= $article['pseudo'] ?></p></div>
                                             <?php endif ; ?>
                                         </a>
                                     <?php endforeach; ?>
@@ -82,7 +82,7 @@ if (count($articles)) {
                             <h2><?= mb_convert_case($selectedCat, MB_CASE_TITLE) ?></h2>
                             <div class="articles-container">
                                 <?php foreach ($articlePerCategory[$selectedCat] as $article) : ?>
-                                    <a href="show-article.php?id=<?= $article['id'] ?>" class="article block">
+                                    <a href="/app/show-article.php?id=<?= $article['id'] ?>" class="article block">
                                         <div class="overflow">
                                             <div class="img-container" style="background-image:url(<?= $article['image'] ?>)"></div>
                                         </div>
