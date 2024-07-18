@@ -14,5 +14,5 @@ if ($currentUser && $_SERVER['REQUEST_METHOD'] === 'GET' ) {
         }
     }
 }
-header('Location: app/index.php');
+header('Location: /index.php');
 exit();

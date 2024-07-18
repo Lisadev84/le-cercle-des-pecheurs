@@ -4,7 +4,7 @@ $authDB= require_once __DIR__ . '/database/security.php';
 
 $currentUser = $authDB->isLoggedin();
 if(!$currentUser) {
-    header('Location: app/index.php');
+    header('Location: /index.php');
 }
 $articleDB = require_once __DIR__ . '/database/models/ArticleDB.php';
 
@@ -23,7 +23,7 @@ $id = $_GET['id'] ?? '';
 if ($id) {
     $article = $articleDB->fetchOne($id);
     if($article['author'] !== $currentUser['id'] && $currentUser['role'] !== 'admin'){
-        header('Location: app/index.php');
+        header('Location: /index.php');
     }
 
     $title = $article['title'];
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'author' => $currentUser['id']
            ]);
         }
-        header('Location: /app/index.php');
+        header('Location: /index.php');
     }
 }
 ?>
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <?php require_once 'includes/head.php' ?>
-    <link rel="stylesheet" href="/app/public/css/form-article.css">
+    <link rel="stylesheet" href="/public/css/form-article.css">
     <title><?= $id ? 'Modifier' : 'Créer' ?> un article</title>
 </head>
 
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="content">
             <div class="block p-20 form-container">
                 <h1><?= $id ? 'Modifier' : 'Ecrire' ?> un article</h1>
-                <form action="/app/form-article.php<?= $id ? "?id=$id" : '' ?>" , method="POST">
+                <form action="/form-article.php<?= $id ? "?id=$id" : '' ?>" , method="POST">
                     <div class="form-control">
                         <label for="title">Titre</label>
                         <input type="text" name="title" id="title" value="<?= $title ?? '' ?>">
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php endif; ?>
                     </div>
                     <div class="action">
-                        <a href="/app/index.php" class="btn btn-secondary" type="button">Annuler</a>
+                        <a href="/index.php" class="btn btn-secondary" type="button">Annuler</a>
                         <button class="btn btn-primary" type="submit"><?= $id ? 'Modifier' : 'Sauvegarder' ?></button>
                     </div>
                 </form>
