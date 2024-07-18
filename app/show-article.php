@@ -22,6 +22,15 @@ if (!$id) {
     <?php require_once 'includes/head.php' ?>
     <link rel="stylesheet" href="/public/css/show-article.css">
     <title>Article</title>
+
+    <script>
+    function confirmDeletion(event, articleId) {
+      event.preventDefault();
+      if (confirm("Voulez-vous vraiment supprimer cet article ?")) {
+        window.location.href = '/delete-article.php?id=' + articleId;
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -37,8 +46,8 @@ if (!$id) {
                 <p class="article-author"><?= $article['pseudo'] ?></p>
                 <?php if ($article['author'] === $currentUser['id'] || $currentUser['role'] === 'admin'): ?>
                     <div class="action">
-                        <a class="btn btn-secondary" href="/delete-article.php?id=<?= $article['id'] ?>">Supprimer l'article</a>
-                        <a class="btn btn-primary" href="/form-article.php?id=<?= $article['id'] ?>">Editer l'article</a>
+                    <a href="/form-article.php?id=<?= $article['id'] ?>" class="btn btn-primary btn-small">Modifier</a>
+                    <a href="#" onclick="confirmDeletion(event, <?= $article['id'] ?>)" class="btn btn-secondary btn-small">Supprimer</a>
                     </div>
                 <?php endif ; ?>
             </div>
