@@ -21,8 +21,7 @@ if (count($articles)) {
         }
         return $acc;
     }, []);
-    $coll = collator_create('fr_FR');
-    uksort($categories, fn ($a, $b) => collator_compare($coll, $a, $b));
+   
 
     $articlePerCategory = array_reduce($articles, function ($acc, $article) {
         if (isset($acc[$article['category']])) {
