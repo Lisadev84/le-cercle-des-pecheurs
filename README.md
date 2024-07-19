@@ -3,7 +3,7 @@
 Le cercle des pêcheurs
 
 ## Logo
-![logo le-cercle-des-pecheurs](\public\images\logo.png)
+![logo le-cercle-des-pecheurs](/app/public/images/logo.png)
 
 ## Description
 lecercledespecheurs is a web application that allows users to present, consult, create and edit articles about fishing. 
