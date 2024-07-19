@@ -143,6 +143,14 @@ header {
   display: none;
 }
 
+.header-mobile-icon {
+    margin-left: 55px;
+}
+
+.header-mobile-icon img{
+    width: 25px;
+}
+
 .header-mobile-list {
   display: none;
   position: absolute;
