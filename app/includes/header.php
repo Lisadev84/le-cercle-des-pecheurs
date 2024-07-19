@@ -4,7 +4,9 @@ $currentUser = $currentUser ?? false;
 
 
 <header>
-    <a href="/index.php" class="logo">Le cercle des pêcheurs</a>
+    <a href="/index.php" class="logo">
+        <img src="\public\images\logo.png" alt="">
+    </a>
     <div class="header-mobile">
         <div class="header-mobile-icon">
             <img src="/public/images/menu-burger-horizontal-bold.svg" alt="menu-mobile">
